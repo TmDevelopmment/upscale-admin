@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ForexService {
+
+  key = '8f24f163ff-92006010a9-svs36v'
+
+  constructor(private http:HttpClient) { }
+
+
+  public exchangeRate (from:any,to:any):Observable<any>{
+
+    const options = {method: 'GET', headers: {accept: 'application/json'}};
+
+    return this.http.get('https://api.fastforex.io/fetch-one?from='+from+'&to='+to+'&api_key='+this.key);
+  }
+
+}

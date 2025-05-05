@@ -1,16 +1,20 @@
 <h2 mat-dialog-title>Manage Product Images</h2>
-<form action="" style="margin-top: 10px">
+<form [formGroup]="form" (ngSubmit)="uploadFile()" action="" style="margin-top: 10px">
   <mat-dialog-content class="mat-typography">
     <div style="margin-top: 10px">
       <label for="file">Product Image</label>
-      <input type="file" id="file" class="form-control">
+      <input (change)="onFileSelected($event)" formControlName="image" type="file" id="file" class="form-control">
     </div>
 
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-raised-button [disabled]="loading || form.invalid" color="primary">Upload Image</button>
   </mat-dialog-actions>
 </form>
 <hr>
-images
+<div>
+  <div class="image" style="width: 100px; min-width: 100px; height: ">
+    <img src="" alt="">
+  </div>
+</div>

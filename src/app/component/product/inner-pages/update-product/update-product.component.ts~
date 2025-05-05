@@ -16,11 +16,7 @@ import {FooterRowOutlet} from '@angular/cdk/table';
 @Component({
   selector: 'app-new-product',
   imports: [
-    ReactiveFormsModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogContent,
-    MatDialogTitle
+    ReactiveFormsModule
   ],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.scss'

@@ -5,17 +5,17 @@
   <mat-dialog-content class="mat-typography">
     <div style="margin-top: 10px">
       <label for="description">Product Description</label>
-      <input type="text" formControlName="description" id="description" class="form-control" placeholder="Product Description"
+      <input type="text" id="description" class="form-control" placeholder="Product Description"
              aria-label="Product Description">
     </div>
     <div style="margin-top: 10px">
       <label for="unit_price">Product Unit Price</label>
-      <input type="number" id="unit_price" formControlName="unitPrice" class="form-control" placeholder="Product Unit Price"
+      <input type="number" id="unit_price" class="form-control" placeholder="Product Unit Price"
              aria-label="Product Unit Price">
     </div>
     <div style="margin-top: 10px">
-      <label for="qty">Product Quntity</label>
-      <input type="text" formControlName="qty" id="qty" class="form-control" placeholder="Product Quntity" aria-label="Product Quntity">
+      <label for="quntity">Product Quntity</label>
+      <input type="text" id="quntity" class="form-control" placeholder="Product Quntity" aria-label="Product Quntity">
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>

@@ -54,7 +54,7 @@
             <td>
               <div class="context">
                 {{ item?.unitPrice | currency:'USD' }} |
-                {{ item?.unitPrice*rate | currency:'LKR'}}
+                {{ item?.unitPrice | currency:'LKR'}}
               </div>
             </td>
             <td>

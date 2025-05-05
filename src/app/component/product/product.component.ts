@@ -12,6 +12,7 @@ import {ProductService} from '../../services/product/product.service';
 import {CurrencyPipe, NgForOf} from '@angular/common';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {ClipboardService} from '../../services/clipboard.service';
+import {ForexService} from '../../services/forex/forex.service';
 
 @Component({
   selector: 'app-product',
@@ -34,6 +35,7 @@ export class ProductComponent implements OnInit{
   size: any = 10;
   count: any = 0;
   dataList: any[] = [];
+  rate: any = 0;
 
   searchForm: FormGroup = new FormGroup({
     text:new FormControl('')
@@ -41,13 +43,18 @@ export class ProductComponent implements OnInit{
 
   constructor(private matDialog: MatDialog,
               private productService: ProductService,
-              private clipboardService: ClipboardService
+              private clipboardService: ClipboardService,
+              private forexService: ForexService,
   ) {
 
   }
 
   ngOnInit(): void {
-    this.loadAllProducts();
+    this.forexService.exchangeRate('USD', 'LKR').subscribe(data => {
+      this.rate = data?.data?.rate;
+      this.loadAllProducts();
+    });
+
     this.searchForm.valueChanges.pipe(debounceTime(1000))
       .subscribe(data => {
       this.searchText = data.text;
@@ -76,10 +83,9 @@ export class ProductComponent implements OnInit{
     let matDialogRef = this.matDialog.open(UpdateProductComponent, {
       width: '600px',
       height: '400px',
-      data: {
-        title: 'Update Product'
-      },
+      data: {product:product},
       disableClose: true
+
     });
 
     matDialogRef.afterClosed().subscribe((response) => {
@@ -112,6 +118,7 @@ export class ProductComponent implements OnInit{
       console.log(response);
       this.dataList = response.data?.dataList;
       this.count = response.data.count;
+
     });
   }
 

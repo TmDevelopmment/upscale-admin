@@ -9,6 +9,8 @@ export class ProductService {
 
   baseUrl = 'https://localhost:8001/api/v1/products';
 
+  productImageUrl = 'https://localhost:8001/api/v1/products-images';
+
   constructor(private http:HttpClient) { }
 
   create(obj:any):Observable<any> {
@@ -29,5 +31,18 @@ export class ProductService {
 
   delete(id:any):Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  update(obj:any,id:any):Observable<any> {
+    return this.http.post(this.baseUrl+'/'+id ,{
+      qty: obj.qty,
+      unitPrice: obj.unitPrice,
+      description: obj.description
+    })
+  }
+
+  productImageUpload(data:FormData, productId:any):Observable<any> {
+    return this.http.post(this.productImageUrl+'/'+productId,data)
+
   }
 }
