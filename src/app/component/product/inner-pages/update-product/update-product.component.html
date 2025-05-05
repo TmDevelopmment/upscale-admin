@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Update Product</h2>
+<form action="" style="margin-top: 10px">
+  <mat-dialog-content class="mat-typography">
+    <div style="margin-top: 10px">
+      <label for="description">Product Description</label>
+      <input type="text" id="description" class="form-control" placeholder="Product Description"
+             aria-label="Product Description">
+    </div>
+    <div style="margin-top: 10px">
+      <label for="unit_price">Product Unit Price</label>
+      <input type="number" id="unit_price" class="form-control" placeholder="Product Unit Price"
+             aria-label="Product Unit Price">
+    </div>
+    <div style="margin-top: 10px">
+      <label for="quntity">Product Quntity</label>
+      <input type="text" id="quntity" class="form-control" placeholder="Product Quntity" aria-label="Product Quntity">
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+  </mat-dialog-actions>
+</form>

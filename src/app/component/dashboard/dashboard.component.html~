@@ -1,0 +1,9 @@
+<div style="padding: 100px 0" class="outer">
+  <div class="container">
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary" routerLink="/customers">Customers</button>
+      <button type="button" class="btn btn-outline-primary" routerLink="/products">Products</button>
+      <button type="button" class="btn btn-outline-primary">Right</button>
+    </div>
+  </div>
+</div>

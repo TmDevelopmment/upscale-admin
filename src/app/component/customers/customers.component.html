@@ -1,0 +1,76 @@
+<div class="outer" style="margin: 20px 0">
+  <div class="container">
+    <hr>
+    <h1>Customer Management</h1>
+    <hr>
+    <div class="row">
+      <div class="col-4">
+        <form>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..."
+                   aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+          </div>
+        </form>
+      </div>
+      <br>
+      <div class="col-12" style="margin-top: 50px">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>#id</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Full</th>
+            <th>Active Status</th>
+            <th>Contact</th>
+            <th>Tools</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <div class="context">
+                djh-23sd-sd
+                <mat-icon>context copy</mat-icon>
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                colombo rd panadura
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                <a href="#">tehanmatthew{{ '@' }}gmail.com</a>
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                Tehan Matthew
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                <app-cutomer-status-manager [customerStatus]="''"></app-cutomer-status-manager>
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                <a href="#">+9477-1234567</a>
+              </div>
+            </td>
+            <td>
+              <div class="context">
+                <button color="warning" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                  <mat-icon>delete_sweep</mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

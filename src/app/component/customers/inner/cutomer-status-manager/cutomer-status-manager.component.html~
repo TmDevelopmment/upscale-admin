@@ -1,0 +1,6 @@
+<mat-slide-toggle
+  class="example-margin"
+  color="primary" [checked]="customerStatus?.act">
+  Activated
+  Deactivated
+</mat-slide-toggle>
