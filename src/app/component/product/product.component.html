@@ -7,14 +7,15 @@
       <div class="col-4">
         <form>
           <form [formGroup]="searchForm" class="input-group mb-3">
-            <input formControlName="text" type="text" class="form-control" placeholder="Search for..." aria-label="Search for..."
+            <input formControlName="text" type="text" class="form-control" placeholder="Search for..."
+                   aria-label="Search for..."
                    aria-describedby="button-addon2">
           </form>
         </form>
       </div>
       <div class="col-4">
         &nbsp;&nbsp;
-        <button class="btn btn-primary"  (click)="openNewProductDialog()">
+        <button class="btn btn-primary" (click)="openNewProductDialog()">
           <mat-icon>add</mat-icon>
           New Product
         </button>
@@ -36,23 +37,23 @@
           <tr *ngFor="let item of dataList">
             <td>
               <div class="context">
-               {{item?.propertyId}} &nbsp;
-                <mat-icon>context copy</mat-icon>
+                {{ item?.propertyId }} &nbsp;
+                <mat-icon (click)="copyText(item?.propertyId)">context copy</mat-icon>
               </div>
             </td>
             <td>
               <div class="context">
-                {{item?.description}}
+                {{ item?.description }}
               </div>
             </td>
             <td>
               <div class="context">
-                {{item?.qty}}
+                {{ item?.qty }}
               </div>
             </td>
             <td>
               <div class="context">
-                {{item?.unitPrice | currency:'USD'}} | 30000LKR
+                {{ item?.unitPrice | currency:'USD' }} | 30000LKR
               </div>
             </td>
             <td>
@@ -67,10 +68,12 @@
             </td>
             <td>
               <div class="context">
-                <button color="warning" mat-icon-button matTooltip="Delete" (click)="deleteConfirm(item)" aria-label="Example icon button with a vertical three dot icon">
+                <button color="warning" mat-icon-button matTooltip="Delete" (click)="deleteConfirm(item)"
+                        aria-label="Example icon button with a vertical three dot icon">
                   <mat-icon>delete_sweep</mat-icon>
                 </button>
-                <button (click)="openUpdateProductDialog(item)" color="warning" mat-icon-button matTooltip="Update" aria-label="Example icon button with a vertical three dot icon">
+                <button (click)="openUpdateProductDialog(item)" color="warning" mat-icon-button matTooltip="Update"
+                        aria-label="Example icon button with a vertical three dot icon">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button color="warning" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
@@ -81,6 +84,14 @@
           </tr>
           </tbody>
         </table>
+        <mat-paginator
+          [length]="count"
+          [pageIndex]="page"
+          [pageSize]="size"
+          [pageSizeOptions]="[10, 20, 30, 40, 50,60,70,80,90,100]"
+          (page)="getServerData($event)"
+        >
+        </mat-paginator>
       </div>
     </div>
   </div>

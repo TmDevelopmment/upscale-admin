@@ -10,6 +10,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {debounce, debounceTime} from 'rxjs';
 import {ProductService} from '../../services/product/product.service';
 import {CurrencyPipe, NgForOf} from '@angular/common';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {ClipboardService} from '../../services/clipboard.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +21,8 @@ import {CurrencyPipe, NgForOf} from '@angular/common';
     MatTooltip,
     ReactiveFormsModule,
     CurrencyPipe,
-    NgForOf
+    NgForOf,
+    MatPaginator
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
@@ -37,11 +40,14 @@ export class ProductComponent implements OnInit{
   });
 
   constructor(private matDialog: MatDialog,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private clipboardService: ClipboardService
+  ) {
 
   }
 
   ngOnInit(): void {
+    this.loadAllProducts();
     this.searchForm.valueChanges.pipe(debounceTime(1000))
       .subscribe(data => {
       this.searchText = data.text;
@@ -109,7 +115,13 @@ export class ProductComponent implements OnInit{
     });
   }
 
-  deleteConfirm(item) {
+  deleteConfirm(item: any) {
 
+  }
+
+  getServerData(data: PageEvent) {
+    this.page = data?.pageIndex;
+    this.size = data?.pageSize;
+    this.loadAllProducts();
   }
 }
