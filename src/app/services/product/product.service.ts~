@@ -27,7 +27,7 @@ export class ProductService {
     return this.http.get(this.baseUrl+'/list',{params: params});
   }
 
-  delete(id:any):Observable<any> {
+  delete(propet:any):Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
 }

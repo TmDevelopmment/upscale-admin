@@ -116,7 +116,13 @@ export class ProductComponent implements OnInit{
   }
 
   deleteConfirm(item: any) {
-
+    if(confirm('are you sure to delete this product?')) {
+      this.productService.delete(item?.propertyId).subscribe(response => {
+        this.loadAllProducts();
+      }, error => {
+        console.log(error?.error?.message);
+      });
+    }
   }
 
   getServerData(data: PageEvent) {
